@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Забруднення навколишнього середовища - Опитування</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #1b5e20;
+            --light-color: #e8f5e9;
+            --dark-color: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-color);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./image/забруднення.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        section {
+            padding: 5rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .form-section {
+            background-color: var(--light-color);
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .results-section {
+            background-color: #f5f5f5;
+        }
+
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .chart {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .chart h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .chart-placeholder {
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .footer-links li {
+            margin: 0 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ЕкоСвідомість</div>
+            <ul class="nav-links">
+                <li><a href="#about">Про проблему</a></li>
+                <li><a href="#survey">Опитування</a></li>
+                <li><a href="#results">Результати</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Забруднення навколишнього середовища</h1>
+            <p>Наша планета потребує нашої допомоги. Дізнайтеся більше про проблеми забруднення та долучіться до нашого опитування, щоб разом знайти рішення.</p>
+            <a href="#survey" class="btn">Пройти опитування</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>Про проблему забруднення</h2>
+            <p>Забруднення навколишнього середовища є однією з найбільших загроз для нашої планети</p>
+        </div>
+
+        <div class="info-cards">
+            <div class="card">
+                <div class="card-img" style="background-image: url('./image/екологія.jpg');"></div>
+                <div class="card-content">
+                    <h3>Забруднення повітря</h3>
+                    <p>Забруднення повітря спричиняє численні захворювання дихальних шляхів та серцево-судинної системи. Щороку мільйони людей помирають через забруднене повітря.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('./image/сміття.jpg');"></div>
+                <div class="card-content">
+                    <h3>Забруднення води</h3>
+                    <p>Забруднення водойм пластиком, хімікатами та іншими відходами загрожує морським екосистемам та доступу до чистої питної води.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('./image/сміття_океан.jpg');"></div>
+                <div class="card-content">
+                    <h3>Пластикові відходи</h3>
+                    <p>Щороку у світовий океан потрапляє понад 8 мільйонів тонн пластику, що загрожує морським тваринам та екосистемам.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="survey" class="form-section">
+        <div class="section-title">
+            <h2>Опитування для учнів</h2>
+            <p>Ваша думка важлива! Пройдіть наше опитування, щоб допомогти нам краще зрозуміти рівень обізнаності про екологічні проблеми</p>
+        </div>
+        
+        <div class="form-container">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfnaVc2oviQ6L-ob4A_YR2c2Ha-IDiZTgsulZPhtZAD4qTPcg/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Завантаження…</iframe>
+        </div>
+    </section>
+
+    <section id="results" class="results-section">
+        <div class="section-title">
+            <h2>Результати опитування</h2>
+            <p>Ознайомтеся з результатами нашого опитування та дізнайтеся, що думають інші учні про проблеми забруднення</p>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart">
+                
+                <div class="chart-placeholder">
+                   <iframe style="width: 100%;height: 500px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkk-EC00HEXZuCh122n6qfqGBM26BO1Zw7hAo5oXrH6lf9_lPMP7GcC196PuaxxTul63BQKXAnTsP5/pubhtml?gid=2013776023&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+                </div>
+            </div>
+ 
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">
+            <h2>Долучайтеся до нас</h2>
+            <p>Разом ми можемо зробити наше довкілля чистішим</p>
+        </div>
+        
+        <div class="info-cards">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Екологічні ініціативи</h3>
+                    <p>Дізнайтеся про екологічні ініціативи у вашому регіоні та долучіться до них.</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">Дізнатися більше</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Поширюйте інформацію</h3>
+                    <p>Розкажіть друзям та родині про проблеми забруднення та про те, як кожен може допомогти.</p>
+                    <a href="#" class="btn" style="margin-top: 1rem;">Поділитися</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3>Зв'яжіться з нами</h3>
+                    <p>Маєте питання або пропозиції? Напишіть нам!</p>
+                    <a href="mailto:danya.hlush@gmail.com" class="btn" style="margin-top: 1rem;">Написати</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">ЕкоСвідомість</div>
+            <ul class="footer-links">
+                <li><a href="#about">Про проблему</a></li>
+                <li><a href="#survey">Опитування</a></li>
+                <li><a href="#results">Результати</a></li>
+            </ul>
+            <p>Разом ми можемо зробити нашу планету чистішою та здоровішою для майбутніх поколінь.</p>
+            <p class="copyright">© 2025 ЕкоСвідомість. Усі права захищено. Глущенко Данило</p>
+        </div>
+    </footer>
+</body>
+</html>
